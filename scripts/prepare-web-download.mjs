@@ -1,0 +1,23 @@
+import { copyFile, mkdir, readFile, stat, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const source = process.argv[2];
+if (!source) throw new Error("Usage: node scripts/prepare-web-download.mjs PATH_TO_UNIVERSAL_DMG");
+const sourcePath = path.resolve(source);
+const filename = path.basename(sourcePath);
+const match = /^Strickey-(\d+\.\d+\.\d+)-universal\.dmg$/.exec(filename);
+if (!match) throw new Error("Expected Strickey-X.Y.Z-universal.dmg.");
+const bytes = await readFile(sourcePath);
+const sha256 = createHash("sha256").update(bytes).digest("hex");
+const checksum = (await readFile(sourcePath + ".sha256", "utf8")).trim().split(/\s+/)[0];
+if (sha256 !== checksum) throw new Error("DMG checksum does not match its sidecar.");
+const destination = path.join(root, "apps/web/public/downloads");
+await mkdir(destination, { recursive: true });
+await copyFile(sourcePath, path.join(destination, filename));
+await writeFile(path.join(destination, filename + ".sha256"), sha256 + "  " + filename + "\n");
+const release = { version: match[1], filename, sha256, size: (await stat(sourcePath)).size };
+await writeFile(path.join(destination, "release.json"), JSON.stringify(release, null, 2) + "\n");
+console.log("Prepared website download: " + filename + " (" + release.size + " bytes)");

@@ -1,0 +1,75 @@
+name: Tests
+
+"on":
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Test and package (${{ matrix.architecture }})
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-26
+            architecture: arm64
+          - runner: macos-26-intel
+            architecture: x86_64
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show toolchain and check runner architecture
+        env:
+          EXPECTED_ARCHITECTURE: ${{ matrix.architecture }}
+        run: |
+          swift --version
+          xcodebuild -version
+          test "$(uname -m)" = "$EXPECTED_ARCHITECTURE"
+
+      - name: Check script syntax
+        run: |
+          for script in scripts/*.sh; do zsh -n "$script"; done
+          python3 -m py_compile scripts/*.py
+
+      - name: Test recorded audio and keyboard event filtering
+        run: ./scripts/test.sh
+
+      - name: Build and verify the native app bundle
+        env:
+          EXPECTED_ARCHITECTURE: ${{ matrix.architecture }}
+        run: |
+          ./scripts/build-app.sh release native
+          codesign --verify --strict dist/Strickey.app
+          test "$(lipo -archs dist/Strickey.app/Contents/MacOS/Strickey)" = "$EXPECTED_ARCHITECTURE"
+
+      - name: Verify packaged recording checksums and attribution
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          bundle = Path('dist/Strickey.app/Contents/Resources/Strickey_StrickeyCore.bundle')
+          manifests = list(bundle.rglob('manifest.json'))
+          assert len(manifests) == 1, 'Expected one bundled recording manifest'
+          folder = manifests[0].parent
+          manifest = json.loads(manifests[0].read_text())
+          assert len(manifest['clips']) == 21, 'Expected 21 Cherry MX recordings'
+          for clip in manifest['clips']:
+              audio = folder / clip['file']
+              assert hashlib.sha256(audio.read_bytes()).hexdigest() == clip['sha256'], audio
+          assert (folder / 'LICENSE-Mechvibes.txt').is_file(), 'Missing sound license'
+          assert (folder / 'CREDITS.md').is_file(), 'Missing sound attribution'
+          print('All packaged recording hashes and attribution verified.')
+          PY

@@ -1,0 +1,15 @@
+.build/
+dist/
+.swiftpm/
+.DS_Store
+*.xcuserstate
+__pycache__/
+*.pyc
+node_modules/
+.next/
+*.tsbuildinfo
+apps/web/public/generated/
+.vercel/
+.env*
+!.env.example
+apps/web/next-env.d.ts

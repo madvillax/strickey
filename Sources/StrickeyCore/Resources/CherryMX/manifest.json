@@ -1,0 +1,197 @@
+{
+  "source": "https://github.com/hainguyents13/mechvibes",
+  "revision": "326252a13e7bef4f1c35d08ef0189b5af6f8ba02",
+  "license": "MIT",
+  "sample_rate": 44100,
+  "clips": [
+    {
+      "file": "red-regular-0.wav",
+      "pack": "CherryMX Red - PBT keycaps",
+      "source_scan_code": "30",
+      "start_ms": 27803,
+      "duration_ms": 158,
+      "source_blob": "7c5e8ee440211bf303e33691120015fe22ec7a1f",
+      "sha256": "94484e633d4300c4ffbc6f9b4671fcdc77183e8cf2547738834091be34d50de6"
+    },
+    {
+      "file": "red-regular-1.wav",
+      "pack": "CherryMX Red - PBT keycaps",
+      "source_scan_code": "31",
+      "start_ms": 28294,
+      "duration_ms": 151,
+      "source_blob": "7c5e8ee440211bf303e33691120015fe22ec7a1f",
+      "sha256": "90e5a6985b55dcb1046c5759df7237c3895988ec2d9249910939ea1fda7b6d7c"
+    },
+    {
+      "file": "red-regular-2.wav",
+      "pack": "CherryMX Red - PBT keycaps",
+      "source_scan_code": "32",
+      "start_ms": 28716,
+      "duration_ms": 178,
+      "source_blob": "7c5e8ee440211bf303e33691120015fe22ec7a1f",
+      "sha256": "35fb474012ee5b6c7f4ccec13fad8d6021bea0ee178792369b35589d1b99f0cf"
+    },
+    {
+      "file": "red-regular-3.wav",
+      "pack": "CherryMX Red - PBT keycaps",
+      "source_scan_code": "33",
+      "start_ms": 29158,
+      "duration_ms": 182,
+      "source_blob": "7c5e8ee440211bf303e33691120015fe22ec7a1f",
+      "sha256": "e988313846ad2ead1b255cdee449fe0c391722c3b7268454e869011f776d5e04"
+    },
+    {
+      "file": "red-space.wav",
+      "pack": "CherryMX Red - PBT keycaps",
+      "source_scan_code": "57",
+      "start_ms": 47621,
+      "duration_ms": 300,
+      "source_blob": "7c5e8ee440211bf303e33691120015fe22ec7a1f",
+      "sha256": "74179412c63cdbda034134d38217dab7b0f1944865613237e6e2b1c6e9cef7dd"
+    },
+    {
+      "file": "red-enter.wav",
+      "pack": "CherryMX Red - PBT keycaps",
+      "source_scan_code": "28",
+      "start_ms": 32734,
+      "duration_ms": 230,
+      "source_blob": "7c5e8ee440211bf303e33691120015fe22ec7a1f",
+      "sha256": "6e6f6e03be9f6a6aeb446092871447fcb4b56cd2aa76efe1293eb7111d5475d0"
+    },
+    {
+      "file": "red-delete.wav",
+      "pack": "CherryMX Red - PBT keycaps",
+      "source_scan_code": "14",
+      "start_ms": 17067,
+      "duration_ms": 207,
+      "source_blob": "7c5e8ee440211bf303e33691120015fe22ec7a1f",
+      "sha256": "520812e0a547022b9e33eabb721445d081d9e458bfbf4aa00229dfc9a1497583"
+    },
+    {
+      "file": "brown-regular-0.wav",
+      "pack": "CherryMX Brown - PBT keycaps",
+      "source_scan_code": "30",
+      "start_ms": 22869,
+      "duration_ms": 198,
+      "source_blob": "bba9c3b04e2c8d3214d52ac088dd3ce4407167ef",
+      "sha256": "bc732d1926688bd1668ad006a60eade8334ee1a2b4e8c9f08a990c48158ea2b7"
+    },
+    {
+      "file": "brown-regular-1.wav",
+      "pack": "CherryMX Brown - PBT keycaps",
+      "source_scan_code": "31",
+      "start_ms": 23237,
+      "duration_ms": 178,
+      "source_blob": "bba9c3b04e2c8d3214d52ac088dd3ce4407167ef",
+      "sha256": "4479818384508dae03dc7e72d6904efe6264ca5466ba345f1fd04c27b6be1d65"
+    },
+    {
+      "file": "brown-regular-2.wav",
+      "pack": "CherryMX Brown - PBT keycaps",
+      "source_scan_code": "32",
+      "start_ms": 23586,
+      "duration_ms": 187,
+      "source_blob": "bba9c3b04e2c8d3214d52ac088dd3ce4407167ef",
+      "sha256": "01d219fd7cb19097906bf858dddc7ac63ec7f79644bc9360638acced5fac9a7b"
+    },
+    {
+      "file": "brown-regular-3.wav",
+      "pack": "CherryMX Brown - PBT keycaps",
+      "source_scan_code": "33",
+      "start_ms": 23898,
+      "duration_ms": 179,
+      "source_blob": "bba9c3b04e2c8d3214d52ac088dd3ce4407167ef",
+      "sha256": "b4abb2ccce746f5f56396bf4858b04c1df376b545d5dddeb6ae8496690579c03"
+    },
+    {
+      "file": "brown-space.wav",
+      "pack": "CherryMX Brown - PBT keycaps",
+      "source_scan_code": "57",
+      "start_ms": 34910,
+      "duration_ms": 223,
+      "source_blob": "bba9c3b04e2c8d3214d52ac088dd3ce4407167ef",
+      "sha256": "78ceeeee11f3e87405c04f9f42376842d40539c44fe5ae85220e5dd12fa45c20"
+    },
+    {
+      "file": "brown-enter.wav",
+      "pack": "CherryMX Brown - PBT keycaps",
+      "source_scan_code": "28",
+      "start_ms": 26703,
+      "duration_ms": 181,
+      "source_blob": "bba9c3b04e2c8d3214d52ac088dd3ce4407167ef",
+      "sha256": "30f927b4a627df90e176eea3da6b8885b89619a358657fa91c3dc82a0fa4983d"
+    },
+    {
+      "file": "brown-delete.wav",
+      "pack": "CherryMX Brown - PBT keycaps",
+      "source_scan_code": "14",
+      "start_ms": 13765,
+      "duration_ms": 184,
+      "source_blob": "bba9c3b04e2c8d3214d52ac088dd3ce4407167ef",
+      "sha256": "12b01ebaeb62456bd7f56f6f4b26c4bcd069c584f0087549a8854213dc702e8e"
+    },
+    {
+      "file": "blue-regular-0.wav",
+      "pack": "CherryMX Blue - PBT keycaps",
+      "source_scan_code": "30",
+      "start_ms": 28961,
+      "duration_ms": 164,
+      "source_blob": "440f14283131c0bc95a2f2d9de639f61b81e53df",
+      "sha256": "a5e64191d938619eae5c17fdf0854acfd5518aed2aa88a6024e7fa46c505a90b"
+    },
+    {
+      "file": "blue-regular-1.wav",
+      "pack": "CherryMX Blue - PBT keycaps",
+      "source_scan_code": "31",
+      "start_ms": 29448,
+      "duration_ms": 171,
+      "source_blob": "440f14283131c0bc95a2f2d9de639f61b81e53df",
+      "sha256": "15aaf4fa2b7741e2150282ac25a183d5046789c09daf196586d932cd93abaf88"
+    },
+    {
+      "file": "blue-regular-2.wav",
+      "pack": "CherryMX Blue - PBT keycaps",
+      "source_scan_code": "32",
+      "start_ms": 29968,
+      "duration_ms": 163,
+      "source_blob": "440f14283131c0bc95a2f2d9de639f61b81e53df",
+      "sha256": "3c842375247121213d96bd5786b0fecd5ec64bfcef4acff63cb11f214d024b67"
+    },
+    {
+      "file": "blue-regular-3.wav",
+      "pack": "CherryMX Blue - PBT keycaps",
+      "source_scan_code": "33",
+      "start_ms": 30454,
+      "duration_ms": 208,
+      "source_blob": "440f14283131c0bc95a2f2d9de639f61b81e53df",
+      "sha256": "5f8084425f4b4cdba935250e79adbe7956033ae828b1df692287f770b6f3a9f9"
+    },
+    {
+      "file": "blue-space.wav",
+      "pack": "CherryMX Blue - PBT keycaps",
+      "source_scan_code": "57",
+      "start_ms": 49628,
+      "duration_ms": 230,
+      "source_blob": "440f14283131c0bc95a2f2d9de639f61b81e53df",
+      "sha256": "b4c3c6e1de5f56cca413cdd022d5bf64415038b4c0d30344463bce2206106165"
+    },
+    {
+      "file": "blue-enter.wav",
+      "pack": "CherryMX Blue - PBT keycaps",
+      "source_scan_code": "28",
+      "start_ms": 34274,
+      "duration_ms": 204,
+      "source_blob": "440f14283131c0bc95a2f2d9de639f61b81e53df",
+      "sha256": "5ea13e22fac3b3f7956238c989aecfd3f27a51da55ef82dd14420357fcb1bb07"
+    },
+    {
+      "file": "blue-delete.wav",
+      "pack": "CherryMX Blue - PBT keycaps",
+      "source_scan_code": "14",
+      "start_ms": 16906,
+      "duration_ms": 230,
+      "source_blob": "440f14283131c0bc95a2f2d9de639f61b81e53df",
+      "sha256": "1847b7104d7d2f589e1f0bf97510923c72c49d6e988abda66b8809c6bff338ac"
+    }
+  ]
+}

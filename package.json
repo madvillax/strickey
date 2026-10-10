@@ -1,0 +1,15 @@
+{
+  "name": "strickey",
+  "private": true,
+  "workspaces": ["apps/web"],
+  "engines": { "node": ">=22.0.0" },
+  "scripts": {
+    "dev": "npm run dev --workspace @strickey/web",
+    "build": "npm run build --workspace @strickey/web",
+    "start": "npm run start --workspace @strickey/web",
+    "lint": "npm run lint --workspace @strickey/web",
+    "typecheck": "npm run typecheck --workspace @strickey/web",
+    "sync:web": "node scripts/sync-web-assets.mjs",
+    "package:web": "zsh scripts/build-web-package.sh"
+  }
+}

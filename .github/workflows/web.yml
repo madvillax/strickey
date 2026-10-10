@@ -1,0 +1,23 @@
+name: Website
+on:
+  push:
+    paths: ["apps/web/**", "package*.json", "scripts/sync-web-assets.mjs", "assets/**", ".github/workflows/web.yml", "Sources/StrickeyCore/Resources/CherryMX/**"]
+  pull_request:
+    paths: ["apps/web/**", "package*.json", "scripts/sync-web-assets.mjs", "assets/**", ".github/workflows/web.yml", "Sources/StrickeyCore/Resources/CherryMX/**"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run build
