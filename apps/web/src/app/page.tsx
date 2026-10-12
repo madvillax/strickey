@@ -75,7 +75,13 @@ export default function Home() {
           <div><h3>The app</h3><a href="#features">Features</a><a href="#sounds">Try the sounds</a><a href={download}>Download for Mac</a></div>
           <div><h3>Open source</h3><a href={repository} target="_blank" rel="noreferrer">GitHub <IconArrowUpRight size={14} /></a><a href={repository + "/blob/main/CONTRIBUTING.md"} target="_blank" rel="noreferrer">Contribute</a><a href={repository + "/issues"} target="_blank" rel="noreferrer">Report an issue</a></div>
           <div><h3>The details</h3><a href={repository + "/blob/main/architecture.md"} target="_blank" rel="noreferrer">Architecture</a><a href={repository + "/blob/main/LICENSE"} target="_blank" rel="noreferrer">MIT license</a><a href="/generated/sounds/CREDITS.md">Sound credits</a></div>
-          <div className="footer-note"><span>Built for the love of typing.</span><p>No account to create.<br />No subscription to keep.<br />Just you and a very good click.</p></div>
+          <div className="footer-note">
+            <span>Built for the love of typing.</span>
+            <p>No account to create.<br />No subscription to keep.<br />Just you and a very good click.</p>
+            <a className="alternativeto-badge" href="https://alternativeto.net/software/strickey/about/?utm_source=badge&amp;utm_medium=referral" target="_blank" rel="noreferrer" aria-label="strickey on AlternativeTo">
+              <img src="https://alternativeto.net/static/badges/badge-compact-dark.svg" alt="strickey | AlternativeTo" width="171" height="58" />
+            </a>
+          </div>
         </div>
         <div className="footer-wordmark" aria-hidden="true">strickey</div>
         <div className="footer-bottom"><a href="https://github.com/madvillax" target="_blank" rel="noreferrer">Made by Mohit Sharma <IconArrowUpRight size={14} /></a><span>Swift at heart. Open by nature.</span></div>

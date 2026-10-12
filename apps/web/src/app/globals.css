@@ -166,6 +166,8 @@ h2 span { color: var(--muted); }
 .footer-links a { display: flex; align-items: center; gap: 4px; font-size: 13px; margin-bottom: 11px; color: #ffffff; width: fit-content; }
 .footer-links a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .footer-note p { color: #ffffff; font-size: 13px; line-height: 1.75; margin: 0; }
+.footer-note .alternativeto-badge { display: block; width: min(145px, 100%); height: auto; margin-top: 22px; }
+.alternativeto-badge img { display: block; width: 100%; height: auto; }
 .footer-wordmark { font-size: clamp(75px, 22vw, 298px); font-weight: 500; letter-spacing: -0.078em; line-height: 0.94; margin-top: 38px; color: #ffffff; text-align: center; overflow: hidden; }
 .footer-bottom { border-top: 1px solid #ffffff50; display: flex; align-items: center; justify-content: space-between; padding: 23px 0 26px; gap: 20px; font-size: 11px; color: #ffffff; }
 .footer-bottom > a { display: inline-flex; align-items: center; gap: 4px; }
