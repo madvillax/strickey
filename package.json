@@ -9,6 +9,7 @@
     "start": "npm run start --workspace @strickey/web",
     "lint": "npm run lint --workspace @strickey/web",
     "typecheck": "npm run typecheck --workspace @strickey/web",
+    "test:seo": "node --test scripts/web-seo.test.mjs",
     "sync:web": "node scripts/sync-web-assets.mjs",
     "package:web": "zsh scripts/build-web-package.sh"
   }

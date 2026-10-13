@@ -1,20 +1,26 @@
 import type { Metadata } from "next";
 import { GeistPixelSquare } from "geist/font/pixel";
 import localFont from "next/font/local";
+import { isIndexable, siteURL, siteTitle, siteDescription, socialPreview } from "@/lib/seo";
 import "./globals.css";
 
 const Manrope = localFont({ src: "./fonts/manrope-latin.woff2", variable: "--font-manrope", weight: "200 800", display: "swap" });
-const productionDomain = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL;
-const siteURL = process.env.NEXT_PUBLIC_SITE_URL || (productionDomain ? "https://" + productionDomain : "http://localhost:3000");
-const socialPreview = { url: "/social/strickey.png", width: 1200, height: 630, alt: "strickey. All the clack. None of the keyboard.", type: "image/png" };
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteURL),
-  title: "strickey",
-  description: "Real Cherry MX keyboard sounds for your Mac. A tiny, free, open-source menu bar app with switch profiles and independent volume.",
+  metadataBase: siteURL,
+  title: { default: siteTitle, template: "%s | strickey" },
+  description: siteDescription,
+  applicationName: "strickey",
+  authors: [{ name: "Mohit Sharma", url: "https://github.com/madvillax" }],
+  robots: isIndexable
+    ? { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } }
+    : { index: false, follow: false },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    other: process.env.BING_SITE_VERIFICATION ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION } : undefined,
+  },
   icons: { icon: "/generated/strickey-logo.png", apple: "/generated/strickey-logo.png" },
-  openGraph: { title: "strickey", siteName: "strickey", url: "/", description: "Bring the sounds of mechanical switches to your everyday typing.", type: "website", images: [socialPreview] },
-  twitter: { card: "summary_large_image", title: "strickey", description: "A tiny mechanical keyboard soundtrack for your Mac.", images: [socialPreview] },
+  openGraph: { title: siteTitle, siteName: "strickey", url: "/", locale: "en_US", description: siteDescription, type: "website", images: [socialPreview] },
+  twitter: { card: "summary_large_image", title: siteTitle, description: siteDescription, images: [socialPreview] },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

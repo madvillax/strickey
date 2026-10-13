@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { IconArrowUpRight, IconBrandApple, IconBrandGithub, IconShieldLock, IconVolume, IconAdjustmentsHorizontal, IconKeyboard, IconPlus } from "@tabler/icons-react";
 import { Brand } from "@/components/brand";
@@ -5,6 +6,11 @@ import { PixelKeyboard } from "@/components/pixel-keyboard";
 import { AppMockup } from "@/components/app-mockup";
 import { Reveal } from "@/components/reveal";
 import { download, downloadFilename, repository } from "@/lib/site";
+import { structuredData } from "@/lib/structured-data";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const questions: { question: string; answer: string; guide?: string }[] = [
   { question: "Do I need a mechanical keyboard?", answer: "Just your Mac. strickey adds recorded mechanical switch sounds to your built-in keyboard or any keyboard you already use." },
@@ -20,6 +26,7 @@ function DownloadLink({ className = "button button-blue", children = "Download f
 
 export default function Home() {
   return <div id="top">
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
     <a href="#main" className="skip-link">Skip to content</a>
     <header className="site-header">
       <nav className="nav-shell shell" aria-label="Main navigation">
@@ -33,7 +40,7 @@ export default function Home() {
         <div className="hero-copy">
           <p className="hero-eyebrow"><IconBrandApple size={14} /> A little joy for your Mac</p>
           <h1 id="hero-title">All the <span>clack.</span><br />None of the keyboard.</h1>
-          <p className="hero-description">The sound of your favorite mechanical switches.<br className="desktop-break" /> On the keyboard you already love.</p>
+          <p className="hero-description">Real Cherry MX mechanical keyboard sounds for your Mac.<br className="desktop-break" /> On the keyboard you already love.</p>
           <div className="hero-actions"><DownloadLink /><a className="text-link" href={repository} target="_blank" rel="noreferrer"><IconBrandGithub size={17} />Free & open source <IconArrowUpRight size={14} /></a></div>
         </div>
         <PixelKeyboard />

@@ -46,9 +46,34 @@ Deploy this as a Next.js project with **Root Directory: apps/web**. On Vercel, e
 
 See [Vercel's monorepo guide](https://vercel.com/docs/monorepos) and [shared source file settings](https://vercel.com/docs/monorepos/monorepo-faq).
 
-Set NEXT_PUBLIC_SITE_URL to the final public site URL for social metadata. On Vercel, the fallback uses VERCEL_PROJECT_PRODUCTION_URL before the deployment-specific VERCEL_URL, keeping social image links on the public production domain. Local builds use localhost. No secrets or API keys are required.
+Set `NEXT_PUBLIC_SITE_URL` to the final HTTPS production origin **before building** (see `.env.example`). This controls canonical links, social image URLs, structured data, robots, and the sitemap. On Vercel, `VERCEL_PROJECT_PRODUCTION_URL` is the fallback; deployment-specific `VERCEL_URL` is deliberately not used. Local builds use localhost. No secrets or API keys are required.
 
-Open Graph and Twitter use the 1200×630 hero image in public/social/strickey.png, with the preview title and site name set to strickey. Twitter uses a large image card.
+## SEO
+
+- Next.js serves `/robots.txt` and `/sitemap.xml` from `src/app/robots.ts` and `src/app/sitemap.ts`. Only the canonical homepage is listed; downloads and section anchors are not pages.
+- The homepage has a self-referencing canonical, descriptive title/description, and Open Graph/Twitter large-image cards using `public/social/strickey.png` (1200×630).
+- Server-rendered JSON-LD describes the website, page, and free macOS software. Software version and download URL track `public/downloads/release.json`. No ratings or reviews are fabricated; software rich results are not guaranteed.
+- Vercel previews/development and localhost builds are `noindex`, block crawling, and return an empty sitemap. Preview detection uses `VERCEL_ENV`; on other hosts, explicitly set `VERCEL_ENV=preview` for staging builds. Rebuild after changing the URL or deployment environment.
+- Downloads have `X-Robots-Tag: noindex` headers. They remain crawlable on production so search engines can see that directive.
+- Optional `GOOGLE_SITE_VERIFICATION` and `BING_SITE_VERIFICATION` environment variables emit ownership verification tags. Use the token values, not full HTML tags.
+
+### Launch checklist
+
+1. Set the production URL, deploy, and verify that HTTP/nonpreferred-domain URLs redirect to the preferred HTTPS origin in your hosting configuration.
+2. Check `/robots.txt`, `/sitemap.xml`, the canonical link, and social previews on the deployed site. Production must not emit `noindex`.
+3. Verify ownership in Google Search Console and Bing Webmaster Tools; submit `/sitemap.xml` and request indexing of the homepage.
+4. Validate the page with Google's Rich Results Test and Schema.org Validator. Run PageSpeed Insights on mobile and desktop to assess Core Web Vitals.
+5. Monitor indexing and search performance. These files provide technical SEO foundations, not a guarantee of rankings.
+
+### SEO regression checks
+
+With the built site running (`npm run build` then `npm run start`), run from the repository root:
+
+~~~sh
+npm run test:seo
+~~~
+
+The tests check rendered HTML, JSON-LD, robots, sitemap, social image availability, and download indexing headers. To test a deployed site, set `SEO_TEST_BASE_URL` to its URL. `SEO_EXPECT_SITE_URL` can independently assert the expected canonical origin, and `SEO_EXPECT_INDEXABLE=true` (or `false`) asserts the expected indexing policy.
 
 ## Design and assets
 
